@@ -9,14 +9,14 @@ public class Employee {
     private String Gender;
     private String Address;
     private String Position;
-    private Double Salary;
+    private int Salary;
     private int DepartmentID;
 
 
     public Employee() {
     }
 
-    public Employee(int employeeID, String fullName, String phone, String email, String dateOfBirth, String gender, String address, String position, Double salary, int departmentID) {
+    public Employee(int employeeID, String fullName, String phone, String email, String dateOfBirth, String gender, String address, String position, int salary, int departmentID) {
         EmployeeID = employeeID;
         FullName = fullName;
         Phone = phone;
@@ -93,11 +93,11 @@ public class Employee {
         Position = position;
     }
 
-    public Double getSalary() {
+    public int getSalary() {
         return Salary;
     }
 
-    public void setSalary(Double salary) {
+    public void setSalary(int salary) {
         Salary = salary;
     }
 

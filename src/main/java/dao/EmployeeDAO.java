@@ -1,6 +1,7 @@
 package dao;
 
 import connection.MyConnection;
+import model.Account;
 import model.Employee;
 
 import java.sql.Connection;
@@ -33,7 +34,7 @@ public class EmployeeDAO {
                 e.setGender(rs.getString("Gender"));
                 e.setAddress(rs.getString("Address"));
                 e.setPosition(rs.getString("Position"));
-                e.setSalary(rs.getDouble("Salary"));
+                e.setSalary(rs.getInt("Salary"));
                 e.setDepartmentID(rs.getInt("DepartmentID"));
                 employeeList.add(e);
             }
@@ -45,6 +46,60 @@ public class EmployeeDAO {
         }
 
         return employeeList;
+    }
+
+    public Employee getById(int id) {
+        Employee employee = null;
+        try {
+
+            Connection conn = MyConnection.getConnection();
+
+            String sql = "SELECT * FROM employees WHERE EmployeeID = " + id + " LIMIT 1";
+            Statement stmt = conn.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                employee = new Employee();
+                employee.setEmployeeID(rs.getInt("EmployeeID"));
+                employee.setFullName(rs.getString("FullName"));
+                employee.setPhone(rs.getString("Phone"));
+                employee.setEmail(rs.getString("Email"));
+                employee.setDateOfBirth(rs.getString("DateOfBirth"));
+                employee.setGender(rs.getString("Gender"));
+                employee.setAddress(rs.getString("Address"));
+                employee.setPosition(rs.getString("Position"));
+                employee.setSalary(rs.getInt("Salary"));
+                employee.setDepartmentID(rs.getInt("DepartmentID"));
+            }
+            // Dong tai nguyen
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employee;
+    }
+
+    public void insert(Employee e) {
+        String sql = String.format("INSERT  INTO employees VALUES ('%s','%s','%s','%s','%s','%s','%s','%d',NULL,NULL)",
+               e.getEmployeeID(), e.getFullName(), e.getPhone(),e.getEmail(), e.getDateOfBirth(),
+                e.getGender(),e.getAddress(), e.getSalary(),e.getPosition(), e.getDepartmentID());
+        try{
+            Connection conn = MyConnection.getConnection();
+            Statement stmt = conn.createStatement();
+            long rs = stmt.executeUpdate(sql);
+
+            if (rs == 0) {
+                System.out.println("Thêm thất bại");
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
 }

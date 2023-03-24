@@ -4,22 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5289418-68ce-42c6-97c6-5e218f96ef90" name="Changes" comment="add project">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/AccountDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/DepartmentDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Department.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/AuthenService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/DepartmentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/EmployeesService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
+    <list default="true" id="e5289418-68ce-42c6-97c6-5e218f96ef90" name="Changes" comment="add new future">
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connection/MyConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connection/MyConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DepartmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DepartmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/AuthenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/AuthenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/DepartmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/DepartmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/EmployeesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/EmployeesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +34,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/Application.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -106,7 +103,10 @@
       <workItem from="1679457717076" duration="1250000" />
       <workItem from="1679470977883" duration="45000" />
       <workItem from="1679488384453" duration="13748000" />
-      <workItem from="1679533240222" duration="861000" />
+      <workItem from="1679533240222" duration="11439000" />
+      <workItem from="1679564331800" duration="14628000" />
+      <workItem from="1679619231733" duration="14249000" />
+      <workItem from="1679662935779" duration="1286000" />
     </task>
     <task id="LOCAL-00001" summary="add project">
       <created>1679278616673</created>
@@ -115,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679278616673</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add new future">
+      <created>1679534125569</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679534125569</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,15 +130,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add project" />
-    <option name="LAST_COMMIT_MESSAGE" value="add project" />
+    <MESSAGE value="add new future" />
+    <option name="LAST_COMMIT_MESSAGE" value="add new future" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/AccountDAO.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
