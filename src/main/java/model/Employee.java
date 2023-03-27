@@ -8,8 +8,8 @@ public class Employee {
     private String DateOfBirth;
     private String Gender;
     private String Address;
-    private String Position;
     private int Salary;
+    private String Position;
     private int DepartmentID;
 
 

@@ -1,9 +1,8 @@
 package dao;
-
 import connection.MyConnection;
 import model.Account;
+import model.Department;
 import model.Employee;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -102,4 +101,117 @@ public class EmployeeDAO {
         }
     }
 
+    public void update(Employee e, int id) {
+        Employee tmp = getById(id);
+        if (tmp == null) {
+            throw new RuntimeException("Nhân viên không tồn tại!");
+        }
+        final String sql = String.format("UPDATE employees SET " +
+                        "`FullName` = '%s'," +
+                        "`Phone` = '%s'," +
+                        "`Email` = '%s'," +
+                        "`DateOfBirth` = '%s'," +
+                        "`Gender` = '%s'," +
+                        "`Address` = '%s'," +
+                        "`Salary` = %d," +
+                        "`Position`= NULL, " +
+                        "`DepartmentID`= NULL " +
+                        " WHERE `EmployeeID` = "+id+"",
+                e.getFullName(), e.getPhone(),e.getEmail(), e.getDateOfBirth(),
+                e.getGender(),e.getAddress(), e.getSalary(),e.getPosition(), e.getDepartmentID());
+        try {
+
+            Connection conn = MyConnection.getConnection();
+            Statement stmt = conn.createStatement();
+
+            long rs = stmt.executeUpdate(sql);
+
+            if (rs == 0) {
+                System.out.println("Cập nhật thất bại");
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+    }
+
+    public void delete(int id) {
+        Employee e = getById(id);
+        if (e == null) {
+            throw new RuntimeException("Nhân viên không tồn tại!");
+        }
+
+        final String sql = "DELETE FROM employees WHERE  EmployeeID =  "+id+" ";
+        try {
+            Connection conn = MyConnection.getConnection();
+            Statement stmt = conn.createStatement();
+            long rs = stmt.executeUpdate(sql);
+
+            if (rs == 0) {
+                System.out.println("Xoá thất bại");
+            }
+            stmt.close();
+            conn.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    // cập nhật vị trí công việc và mã phòng ban cho nhân viên
+    public void updateDepartment(Employee e, int id) {
+        Employee tmp = getById(id);
+        if (tmp == null) {
+            throw new RuntimeException("Nhân viên không tồn tại!");
+        }
+        final String sql = String.format("UPDATE employees SET " +
+                "`Position`= '%s', " +
+                "`DepartmentID`= '%d' " +
+                " WHERE `EmployeeID` = "+id+"", e.getPosition(), e.getDepartmentID());
+        try {
+
+            Connection conn = MyConnection.getConnection();
+            Statement stmt = conn.createStatement();
+
+            long rs = stmt.executeUpdate(sql);
+
+            if (rs == 0) {
+                System.out.println("Cập nhật thất bại");
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public void deleteEmpFromDep(int id) {
+        Employee tmp = getById(id);
+        if (tmp == null) {
+            throw new RuntimeException("Nhân viên không tồn tại!");
+        }
+        final String sql = "UPDATE employees SET " +
+                "`Position`= NULL, " +
+                "`DepartmentID`= NULL " +
+                " WHERE `EmployeeID` = "+id+"";
+        try {
+
+            Connection conn = MyConnection.getConnection();
+            Statement stmt = conn.createStatement();
+
+            long rs = stmt.executeUpdate(sql);
+
+            if (rs == 0) {
+                System.out.println("Cập nhật thất bại");
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
 }

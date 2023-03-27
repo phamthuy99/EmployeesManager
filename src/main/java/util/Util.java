@@ -4,7 +4,6 @@ import dao.DepartmentDAO;
 import dao.EmployeeDAO;
 import model.Department;
 import model.Employee;
-
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -53,29 +52,40 @@ public class Util {
         String ipEmailTail = inputEmail[1];
 
         for (Employee empEmail : employeeList){
-            if (empEmail.getEmail() != null){
-                String [] outputEmail = empEmail.getEmail().split("@");
-                String opEmailHead = outputEmail[0];
-                String opEmailTail = outputEmail[1];
-                if (ipEmailHead.equalsIgnoreCase(opEmailHead) &&
-                        ipEmailTail.equalsIgnoreCase(opEmailTail)){
-                    return true;
-                }
+            String [] outputEmail = empEmail.getEmail().split("@");
+            String opEmailHead = outputEmail[0];
+            String opEmailTail = outputEmail[1];
+            return ipEmailHead.equalsIgnoreCase(opEmailHead) &&
+                    ipEmailTail.equalsIgnoreCase(opEmailTail);
+        }
+        return false;
+    }
+
+    public boolean comparePhone(String phone){
+        for (Employee empPhone : employeeList){
+            if (empPhone.getPhone().equals(phone)){
+                return true;
             }
         }
         return false;
     }
     public boolean isCheckGender(String gender){
-        if (gender.equalsIgnoreCase("Nam")
+        return gender.equalsIgnoreCase("Nam")
                 || gender.equalsIgnoreCase("Nữ")
-                || gender.equalsIgnoreCase("Khác")){
-            return true;
+                || gender.equalsIgnoreCase("Khác");
+    }
+
+    public boolean isCheckDepIdEmployee(int id){
+        Employee employee = employeeDAO.getById(id);
+        for (int i = 0; i<= employeeList.size() ; i++){
+            if (employee.getDepartmentID() == 0){
+                return true;
+            }
         }
         return false;
     }
 
-
-    public boolean isCheckIdDep(int id){
+    public boolean isCheckDepId(int id){
         for (Department depId : departmentList){
             if (depId.getDepartmentId() == id){
                 return true;
@@ -84,5 +94,32 @@ public class Util {
         return false;
     }
 
+    public boolean isCheckDepName(String name){
+        //name = name.replaceAll("\\s+","").trim();
+        for (Department depName : departmentList){
+            if (depName.getDepartmentName().equalsIgnoreCase(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isCheckManagerId(int id){
+        for (Department managerId : departmentList){
+            if (managerId.getManagerId() == id){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean isCheckManagement( int employeeID, int deparmentId){
+        Department department = departmentDAO.getById(deparmentId);
+        for (int i = 0; i<departmentList.size(); i++){
+            if (department.getManagerId() != 0 && department.getManagerId() == employeeID){
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

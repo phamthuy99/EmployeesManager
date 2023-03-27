@@ -1,4 +1,5 @@
 import service.AuthenService;
+import service.DepartmentService;
 import service.EmployeesService;
 import ui.UserInterface;
 import java.util.Scanner;
@@ -6,8 +7,8 @@ import java.util.Scanner;
 public class Application {
     static AuthenService authenService = new AuthenService();
     static EmployeesService employeesService = new EmployeesService();
+    static DepartmentService departmentService = new DepartmentService();
     static UserInterface ui = new UserInterface();
-
     static Scanner in = new Scanner(System.in);
     static int option = -1;
 
@@ -48,13 +49,23 @@ public class Application {
             // Hiển thị menu nhân viên
             ui.showEmployeesMenu();
             // Nhập dữ liệu
-            inputMenu(12);
+            inputMenu(14);
             // Chọn menu
             switch (option) {
                 case 1 -> employeesService.showEmployees();
-                case 2 -> employeesService.insertEmployees();
+                case 2 -> employeesService.insertEmployee();
+                case 3 -> employeesService.updateEmployee();
+                case 4 -> employeesService.deleteEmployee();
                 case 5 -> employeesService.getEmployeeById();
-                case 12 -> handleMainMenu();
+                case 6 -> departmentService.showDepartments();
+                case 7 -> departmentService.insertDepartment();
+                case 8 -> departmentService.updateDepartment();
+                case 9 -> departmentService.deleteDepartment();
+                case 10 -> employeesService.insertEmployeeToDepartment();
+                case 11 -> employeesService.deleteEmployeeFromDepartment();
+                case 12 -> employeesService.tranferDepartment();
+                case 13 -> employeesService.caculateTax();
+                case 14 -> handleMainMenu();
             }
 
         }
